@@ -1,0 +1,47 @@
+#container{
+    width: 80%;
+    margin: auto;
+}
+
+#primary{
+    width: 80%;
+    float: left;
+}
+
+#side-bar{
+    width: 19%;
+    float: right;
+}
+
+.post header h3{
+    margin: 0;
+    padding: 0;
+}
+
+.post font h4{
+    margin: 0;
+    padding: 0;
+}
+
+.post{
+    margin-left: 2em;
+    padding: 1em;
+    box-sizing: border-box;
+    border: 1px solid #f1f1f1;
+}
+
+.post footer{
+    background: #ddd;
+    padding: 1em;
+}
+
+.post article{
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.post header{
+    background: #f1f1f1;
+    margin-bottom: 1em;
+    padding: 1em;
+}
