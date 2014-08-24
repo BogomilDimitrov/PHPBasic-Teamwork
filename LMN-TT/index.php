@@ -2,11 +2,20 @@
 include_once('config/db.php');
 include_once('models/master.php');
 $ob = new MasterModel();
-//$ob->select('users');
-echo('---------------------------SELECT------------------------------------------' . '<br />');
-$ob->find(array('table'=>'users'));
-echo('-------------------------END OF SELECT-------------------------------------' . '<br />');
-//$ob->add('users',array('username','password','email'),array('Ananasssss','123445','ss@ss.eu'));
-echo('---------------------------CHECK USER--------------------------------------' . '<br />');
+echo("-----------------------------GetUser--------------------------------" . "<br />");
+echo($ob->getUsers(array("username" => "Atamas","password" => "4324")) . "<br />");
 
-$ob->checkUser('Atamas','1234');
+echo("-----------------------------GetTopic--------------------------------" . "<br />");
+
+$getTopicByID = $ob->getTopicByID(1);
+var_dump($getTopicByID);
+echo("<br/>"."-------------------------GetTopicsFromCategory------------------------" . "<br />");
+
+$Categories = $ob->getCategoryByName("C#");
+var_dump($Categories);
+
+
+echo("<br/>"."-------------------------GetAllCommentsByTopicID------------------------" . "<br />");
+
+$comments = $ob->AllUsers();
+var_dump($comments);
