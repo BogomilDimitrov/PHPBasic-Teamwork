@@ -39,11 +39,11 @@ class MasterModel
             $query .= ' limit ' . $limit;
         }
         $results = $db->query( $query );
-//        return var_dump($results);
-        foreach ($results as $row)
-        {
-            print $row['user_id'] .' - '. $row['username'] . '<br />';
-        }
+        var_dump($results -> fetchAll());
+//        foreach ($results as $row)
+//        {
+//            print $row['user_id'] .' - '. $row['username'] . '<br />';
+//        }
     }
 
        public function add($table,$arrayToSelect = array(),$arrayToInput = array()){
@@ -66,17 +66,21 @@ class MasterModel
                echo($query);
                  $db->exec($query);
            }else{
-               echo("pich ob1rkal si reysa");
+               echo("Error, you can't insert this object");
            }
        }
 
     public function checkUser($username,$password){
         $dbConnect = new Database();
         $db = $dbConnect->get_db();
+//        $query = $db->prepare("SELECT username FROM users WHERE 'username' =".'Shukri');
+//        var_dump($query->rowCount());
 
-        $query = $db->prepare('SELECT username FROM users WHERE username = '.$username);
-
-        var_dump($query);
+        $sql= "SELECT * FROM users WHERE username = :username";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':username', $username, PDO::PARAM_INT);
+        $stmt->execute();
+        var_dump($stmt->fetchAll());
     }
     //$this->table trqbva da go opravish
 
