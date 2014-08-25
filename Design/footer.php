@@ -1,4 +1,9 @@
-    <div id="footer">&copy; Copyright <?php echo date("Y"); ?>, Team "LILY MONTE NEGRO"</div>
+   
+    	<footer>
+    	    <div id="foot-content">
+       		&copy; Copyright <?php echo date("Y"); ?>, Team "LILY MONTE NEGRO"
+    	    </div>
+        </footer>
 
-	</body>
+    </body>
 </html>
