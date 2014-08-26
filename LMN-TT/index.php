@@ -35,3 +35,7 @@ echo("<br/>"."------------------------------AddComment--------------------------
 echo("<br/>"."------------------------------AddTopic------------------------------" . "<br />");
 
 //$createCategory = $ob->createTopic(array("categoryId" => "3", "topicName" => "TestTemichkaZComentar", "comment" => "First Comment", "user_id" => "4"));
+
+echo("<br/>"."------------------------------MainCategory------------------------------" . "<br />");
+
+$mainCategory = $ob->displayMainCategory();

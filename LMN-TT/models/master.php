@@ -148,7 +148,46 @@ class MasterModel
 
         $commetInsertQuery =         $query = "INSERT INTO " . "comments" . "(comment, topic_id,user_id)" . "VALUE('".$comment ."','".$GetTopicId ."','".$userId ."')";
         $db->exec($commetInsertQuery);
+    }
+
+    public function displayMainCategory(){
+        $dbConnect = new Database();
+        $db = $dbConnect->get_db();
+
+        $sql= "SELECT * FROM category";
+        $stm = $db->query($sql);
+        $category = $stm->fetchAll();
+        $result = array();
+
+        foreach($category as $ct){
+            $categoryId = $ct[0];
+            $sql = "SELECT * FROM topic WHERE category_id = $categoryId";
+            $rs = $db->query($sql);
+            $topics = $rs->fetchAll();
+            $count = $rs->rowCount();
+
+            foreach($topics as $top){
+                $topicID = $top['topic_id'];
+
+                $sqll = "SELECT * FROM comments WHERE topic_id = $topicID";
+                $rrs = $db->query($sqll);
+                $countt = $rrs->rowCount();
+                $sqlID = "SELECT MAX(comment_date) FROM comments WHERE topic_id = " . $topicID;
+                $rsID = $db->query($sqlID);
+                $id = $rsID->fetch();
+                $result[$ct[1]] = array(
+                    "category_id" => $ct[0],
+                    "topic_count" => $count,
+                    "comment_count" => $countt,
+                    "last_comment_date" => $id[0]
+                );
+                break;
+            }
+
+        }
+        return $result;
 
     }
+
 
 }
