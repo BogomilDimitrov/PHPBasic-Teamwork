@@ -160,3 +160,69 @@
     display: inline;
     margin: 0 5px !important;
 }
+
+/*--------*/
+.login-registration {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.login-registration p{
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    width: 60%;
+    margin: 10px auto 20px auto;
+
+}
+.login-registration input[type="text"],
+.login-registration input[type="email"],
+.login-registration input[type="password"],
+.login-registration textarea {
+    width: 200px;
+    height: 26px;
+    border-radius: 3px;
+    border: 1px solid #bbbbbb;
+    margin: 0 0 5px 0;
+    padding: 0 0 0 5px;
+    font-size: 12px;
+}
+.login-registration textarea {
+    min-height: 90px;
+    max-width: 200px;
+}
+.form-title{
+    font-size: 24px;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 15px 0 20px 0;
+}
+.login-registration input[type="submit"] {
+    width: 200px;
+    height: 26px;
+    border-radius: 3px;
+    border:none;
+    margin: 0 0 5px 0;
+    padding: 0 0 0 5px;
+    font-size: 12px;
+    color: #ffffff;
+    background: #444444;
+}
+.login-registration input[type="file"]{
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+}
+.file-holder{
+    position: relative;
+}
+
+@media screen and (max-width: 600px){
+    .login-registration {
+        width: 100%;
+        float: none;
+        text-align: center;
+        margin: 0 0 40px 0;
+    }
+    .login-registration p{
+        width: 80%;
+    }
+}
