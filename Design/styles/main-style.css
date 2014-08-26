@@ -1,7 +1,7 @@
 #where-am-i {
     display: block;
     width: 100%;
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
     background: #eeeeee;
     height: 30px;
     padding: 5px 0 0 10px;
@@ -127,6 +127,14 @@
 }
 .button-holder a:hover {
     opacity: 0.8;
+}
+#forum:before, #forum:after {
+    clear: both;
+    content: " ";
+    display: table;
+}
+.pages {
+    margin: 10px 0 0 0;
 }
 .pages ul li{
     list-style: none;
