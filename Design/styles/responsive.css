@@ -12,12 +12,16 @@
     #head-login span a{
         float: none;
     }
+    #nav-content ul {
+        float: none;
+    }
     #nav-content ul li{
         list-style: none;
         display: block;
         line-height: 44px;
         background-color: #9ad9f1;
         border-bottom: 1px solid #84cff1;
+        float: none;
     }
     #nav-content ul li:first-child, #nav-content ul li:first-child a {
         border-top-left-radius: 3px;

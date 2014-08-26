@@ -6,9 +6,10 @@
     <link rel="stylesheet" type="text/css" href="styles/header-styles.css">
     <link rel="stylesheet" type="text/css" href="styles/nav-styles.css">
     <link rel="stylesheet" type="text/css" href="styles/main-style.css">
+    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
     <title><?php ?></title>
 </head>
 <body>
@@ -46,6 +47,12 @@
             <li><a href="#">Десен фланг</a></li>
             <li><a href="#">Лорем Ипсум</a></li>
         </ul>
+        <div class="search-holder">
+            <form>
+                <input type="text" name="search" placeholder="Търси...">
+                <input type="submit" name="search" value= " ">
+            </form>
+        </div>
     </div>
 </nav>
 

@@ -1,4 +1,6 @@
-
+#nav-content ul {
+    float: left;
+}
 #nav-content ul li{
     list-style: none;
     display: inline-block;
@@ -17,4 +19,27 @@
 #nav-content ul li a:hover{
     color: #555555;
     background-color: #c9ecf9;
+}
+.search-holder {
+    float: right;
+}
+.search-holder form input[type="text"]{
+    width: 200px;
+    height: 24px;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    margin: 9px 0 0 0;
+    padding: 0 0 0 5px;
+    font-size: 12px;
+}
+.search-holder form input[type="submit"]{
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    border: none;
+    margin: 9px 0 0 -29px;
+    padding: 0 0 0 5px;
+    font-size: 12px;
+    background: url('../images/magnglassicon.png') 5px 5px no-repeat;
+    background-size: 14px 14px;
 }
