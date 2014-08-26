@@ -2,12 +2,13 @@
 include_once('lib/database.php');
 class MasterModel
 {
-    public function getUsers($args = array()) {
+    public function checkUser($args = array()) {
+        $dbConnect = new Database();
+        $db = $dbConnect->get_db();
 
         $username = $args['username'];
         $password = $args['password'];
-        $dbConnect = new Database();
-        $db = $dbConnect->get_db();
+
         $sql= "SELECT * FROM users WHERE username = :username AND password = :password";
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':username', $username, PDO::PARAM_INT);
@@ -23,9 +24,9 @@ class MasterModel
     }
 
     public function getTopicByID($topicID){
-
         $dbConnect = new Database();
         $db = $dbConnect->get_db();
+
         $sql= "SELECT * FROM topic
                WHERE topic_id = :topicId";
         $sql1 = "SELECT * FROM comments
@@ -39,18 +40,15 @@ class MasterModel
         $stmt->bindParam(':topicId', $topicID, PDO::PARAM_INT);
         $stmt->execute();
         $TopicArray = $stmt->fetchAll();
-        //var_dump($TopicArray1);
 
         $commentsArray = array();
         foreach($TopicArray1 as $ta){
-            array_push($commentsArray, $ta['comment']);
+            array_push($commentsArray, $ta['comment'] = $ta['comment_date']);
         }
             $array = array(
-                "topicId" => $TopicArray[0][0],
-                "topicName" => $TopicArray[0][1],
-                "topicDate" => $TopicArray[0][2],
                 "commentID" => $TopicArray1[0][0],
                 "comments" => $commentsArray,
+
                 "user_id" => $TopicArray[0][4]
             );
         return $array;
@@ -61,6 +59,7 @@ class MasterModel
     public function getCategoryByName($categoryName){
         $dbConnect = new Database();
         $db = $dbConnect->get_db();
+
         $sql= "SELECT * FROM category
                WHERE category_name = :categoryName";
         $stm = $db->prepare($sql);
@@ -85,12 +84,71 @@ class MasterModel
     public function AllUsers(){
         $dbConnect = new Database();
         $db = $dbConnect->get_db();
+
         $sql= "SELECT * FROM users";
         $stm = $db->query($sql);
         $usersArray = $stm->fetchAll();
             return($usersArray);
     }
 
+    public function addComment($args = array()){
+        $dbConnect = new Database();
+        $db = $dbConnect->get_db();
 
+        $comment = $args['comment'];
+        $userId = $args['user_id'];
+        $topicId = $args['topic_id'];
+        $table = "comments";
+        $query = "INSERT INTO " . $table . "(comment, topic_id,user_id)" . "VALUE('".$comment ."','".$topicId ."','".$userId ."')";
+        $result = $db->exec($query);
+
+        if($result != false){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function insertUser($args = array()){
+        $dbConnect = new Database();
+        $db = $dbConnect->get_db();
+
+        $username = $args['username'];
+        $password = $args['password'];
+        $email = $args['email'];
+        $table = 'users';
+
+        $query = "INSERT INTO " . $table . "(username, password, email)" . "VALUE('".$username ."',(PASSWORD('".$password ."')),'".$email ."')";
+
+        if($db->exec($query) != false){
+            return true;
+        }else{
+             return false;
+         }
+    }
+
+    public function createTopic ($args = array()){
+        $dbConnect = new Database();
+        $db = $dbConnect->get_db();
+
+        $categoryId = $args['categoryId'];
+        $topicName = $args['topicName'];
+        $comment = $args['comment'];
+        $userId = $args['user_id'];
+
+        $query = "INSERT INTO topic" . "(name, category_id, user_id)" . "VALUE('".$topicName ."','".$categoryId ."','".$userId ."')";
+        $db->exec($query);
+
+        $selectQuery = "SELECT * FROM topic WHERE name = :topicName";
+        $stmt = $db->prepare($selectQuery);
+        $stmt->bindParam(':topicName', $topicName, PDO::PARAM_INT);
+        $stmt->execute();
+        $temp = $stmt->fetch();
+        $GetTopicId = $temp['topic_id'];
+
+        $commetInsertQuery =         $query = "INSERT INTO " . "comments" . "(comment, topic_id,user_id)" . "VALUE('".$comment ."','".$GetTopicId ."','".$userId ."')";
+        $db->exec($commetInsertQuery);
+
+    }
 
 }
