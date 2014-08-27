@@ -7,7 +7,7 @@ class Controller
         return $model = new MasterModel();
     }
 
-    public function view($view, $data = [], $cat_name){
+    public function view($view, $data = []){
         require_once BASE_PATH .'/views/' . $view . '.php';
     }
 }

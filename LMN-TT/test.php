@@ -4,19 +4,25 @@ include_once('config/db.php');
 include_once('models/master.php');
 include_once('controllers/Controller.php');
 include_once('controllers/Topics.php');
-include_once BASE_PATH . '/views/header.php';
-
-$topics = new Topics();
-$topics->getAllTopicsFromCat('C#');
-include_once BASE_PATH . '/views/footer.php';
+$ob = new MasterModel();
+//include_once BASE_PATH . '/views/header.php';
+//
+//$topics = new Topics();
+//$topics->getAllTopicsFromCat('C#');
+//include_once BASE_PATH . '/views/footer.php';
 
 //echo("-----------------------------GetUser--------------------------------" . "<br />");
-//echo($ob->checkUser(array("username" => "Atamas","password" => "4324")) . "<br />");
+//$pass =  '1234';
+//$pass = md5($pass);
+//var_dump($pass);
+//echo($ob->checkUser(array("username" => "kiwi","password" => md5('troy'))) . "<br />");
 //
 //echo("-----------------------------GetTopic--------------------------------" . "<br />");
-//
-//$getTopicByID = $ob->getTopicByID(6);
-//var_dump($getTopicByID);
+var_dump($ob->getCategoriesFromMain(1));
+//$getTopicFromID = $ob->catInfoById(1);
+//$getbyId = $ob->getTopicByID(1);
+//echo var_dump($getTopicFromID)."<br />";
+//var_dump($getbyId);
 //echo("<br/>"."-------------------------GetTopicsFromCategory------------------------" . "<br />");
 //
 //$Categories = $ob->getCategoryByName("C#");

@@ -30,18 +30,16 @@ CREATE TABLE IF NOT EXISTS `category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(20) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `main_category_id` int(11) NOT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Схема на данните от таблица `category`
 --
 
-INSERT INTO `category` (`category_id`, `category_name`, `user_id`, `main_category_id`) VALUES
-(1, 'C#', 2, 0),
-(2, 'PHP', 1, 0),
-(3, 'Neshto', 2, 2);
+INSERT INTO `category` (`category_id`, `category_name`, `user_id`) VALUES
+(1, 'C#', 2),
+(2, 'PHP', 1);
 
 -- --------------------------------------------------------
 
@@ -58,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `user_id` int(11) NOT NULL,
   `comment_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`comments_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Схема на данните от таблица `comments`
@@ -84,31 +82,7 @@ INSERT INTO `comments` (`comments_id`, `comment`, `topic_id`, `is_modified`, `is
 (17, 'NInja bqla i to', 2, 0, 0, 1, '2014-08-25 23:15:31'),
 (18, 'NInja bqla i to', 2, 0, 0, 1, '2014-08-25 23:15:32'),
 (19, 'NInja bqla i to', 2, 0, 0, 1, '2014-08-25 23:17:30'),
-(20, 'First Comment', 1, 0, 0, 4, '2014-08-26 00:32:25'),
-(21, 'sadasdasd', 4, 0, 0, 4, '2014-08-26 16:16:23'),
-(22, 'qweqweqweqwe', 21, 0, 0, 3, '2014-08-26 16:18:13');
-
--- --------------------------------------------------------
-
---
--- Структура на таблица `main_category`
---
-
-CREATE TABLE IF NOT EXISTS `main_category` (
-  `main_category_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`main_category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
-
---
--- Схема на данните от таблица `main_category`
---
-
-INSERT INTO `main_category` (`main_category_id`, `name`) VALUES
-(1, 'OOP language'),
-(2, 'functional language'),
-(3, 'Kinky language'),
-(4, 'System');
+(20, 'First Comment', 19, 0, 0, 4, '2014-08-26 00:32:25');
 
 -- --------------------------------------------------------
 
@@ -123,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
   `category_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`topic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Схема на данните от таблица `topic`
@@ -148,9 +122,7 @@ INSERT INTO `topic` (`topic_id`, `name`, `date`, `category_id`, `user_id`) VALUE
 (16, 'NinjasLoveOOPPppfP', '2014-08-26 00:29:54', 1, 2),
 (17, 'NinjasLoveOOPPppfP', '2014-08-26 00:30:02', 1, 2),
 (18, 'temichkaBro', '2014-08-26 00:31:42', 3, 4),
-(19, 'TestTemichkaZComentar', '2014-08-26 00:32:25', 3, 4),
-(20, 'NeshtoDrugo', '2014-08-26 16:16:00', 3, 2),
-(21, 'OshteNeshto', '2014-08-26 16:17:24', 3, 5);
+(19, 'TestTemichkaZComentar', '2014-08-26 00:32:25', 3, 4);
 
 -- --------------------------------------------------------
 
