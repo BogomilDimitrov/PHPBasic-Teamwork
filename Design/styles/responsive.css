@@ -72,4 +72,8 @@
     #ol-posts>li>div>div:nth-child(2) {
         width: 75%;
     }
+    .search-holder {
+        margin: 5px 0 0 0;
+        float: none;
+    }
 }
